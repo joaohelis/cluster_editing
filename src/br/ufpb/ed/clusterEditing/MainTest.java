@@ -13,14 +13,10 @@ public class MainTest {
 	public static void main(String[] args) {
 
 		List<Integer> a = new ArrayList<Integer>(),
-					  b = new LinkedList<Integer>();
-		
+					  b = new LinkedList<Integer>();		
 		a.add(1);
-		a.add(2);
-		
+		a.add(2);		
 		System.out.println(a.toArray());
-		
-		
 		System.out.println(a.equals(b));
 		
 

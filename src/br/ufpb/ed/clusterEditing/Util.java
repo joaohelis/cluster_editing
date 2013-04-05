@@ -19,8 +19,8 @@ public class Util {
 	}
 	
 	public static  List<Integer>[] buildAdjacenceListDegree_2(List<Integer>[] adjacenceList){
-		List<Integer>[] adjacenceListDegree_2 = new List[adjacenceList.length];
-		for(int i = 0; i < adjacenceList.length; ++i)
+		List<Integer>[] adjacenceListDegree_2 = new List[adjacenceList.length];		
+		for(int i = 0; i < adjacenceList.length; ++i)			
 			for(Integer adjDegree_1: adjacenceList[i]){
 				for(Integer adjGrau_2: adjacenceList[adjDegree_1]){
 					if (adjacenceListDegree_2[i] == null)
@@ -28,19 +28,18 @@ public class Util {
 					if (!adjacenceListDegree_2[i].contains(adjGrau_2))
 						adjacenceListDegree_2[i].add(adjGrau_2);
 				}
-		}
+			}		
 		return adjacenceListDegree_2;
 	}
 	
 	public static  List<Integer>[] buildAdjacenceList(float[][] adjacenceMatrix){
 		List<Integer>[] adjacenceList = new List[adjacenceMatrix.length]; 
-		for(int i = 0; i < adjacenceMatrix.length; ++i)
+		for(int i = 0; i < adjacenceMatrix.length; ++i){
+			adjacenceList[i] = new LinkedList<Integer>();
 			for(int j = 0; j < adjacenceMatrix.length; ++j)
-				if (adjacenceMatrix[i][j] > 0){
-					if (adjacenceList[i] == null)
-						adjacenceList[i] = new LinkedList<Integer>();
-					adjacenceList[i].add(j);
-				}
+				if (adjacenceMatrix[i][j] > 0)				
+					adjacenceList[i].add(j);				
+		}
 		return adjacenceList;
 	}
 	

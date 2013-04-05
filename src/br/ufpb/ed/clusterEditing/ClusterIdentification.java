@@ -4,7 +4,6 @@ package br.ufpb.ed.clusterEditing;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ClusterIdentification {
 	
@@ -21,22 +20,19 @@ public class ClusterIdentification {
 		boolean[] controlCluster = new boolean[parameters.V];
 		
 		for(int vertex = 0; vertex < parameters.V; ++vertex){
-			if(!controlCluster[vertex]){
-				Cluster cluster = null;
+			if(!controlCluster[vertex]){								
 				Collections.sort(parameters.adjacenceListN1Closed[vertex]);
-				for(Integer adj: parameters.adjacenceListN1[vertex]){
+				boolean isCluster = true;
+				for(Integer adj: parameters.adjacenceListN1[vertex]){					
 					Collections.sort(parameters.adjacenceListN1Closed[adj]);
-					if(parameters.adjacenceListN1Closed[vertex].equals(parameters.adjacenceListN1Closed[adj])){
-						if(cluster == null)
-							cluster = new Cluster();
-						cluster.vertexList.add(vertex);
-						cluster.vertexList.add(adj);
-						controlCluster[adj] = true;
-						controlCluster[vertex] = true;
-					}		
+					controlCluster[adj] = true;
+					if(!parameters.adjacenceListN1Closed[vertex].equals(parameters.adjacenceListN1Closed[adj])){
+						isCluster = false;
+						break;
+					}
 				}
-				if(cluster != null)
-					clusters.add(cluster);
+				if(isCluster)
+					clusters.add(new Cluster(parameters.adjacenceListN1Closed[vertex]));				
 			}
 		}
 		return clusters;

@@ -8,7 +8,7 @@ public class Main {
 		
 		//String fileName = "distancias.txt";
 		//String fileName = "matriz.txt";
-		String fileName = "matrixTest.txt";
+		String fileName = "matrizTesteIdentify.txt";
 		Parameters p;
 		
 		try {
@@ -16,7 +16,7 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			System.out.println("Deu pau no arquivo");
 			return;
-		}
+		}				
 		
 //		GRASP g = new GRASP();
 //		System.out.println(g.construction(0.5f));
